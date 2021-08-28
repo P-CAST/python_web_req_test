@@ -1,4 +1,7 @@
 import requests
+import logging
+import datetime
+import sys
 import os
 from multiprocessing import Process
 
@@ -36,10 +39,20 @@ def main(url):
         Process(target=worker1(url)).start()
         Process(target=worker2(url)).start()
     print('Done')
+    log(url,concurrency)
     finish_task()
 
 def finish_task(): 
     os.system('pause')
+
+def log(url,concurrency):
+    date = datetime.datetime.now()
+    logging.basicConfig(
+        filename='LogFile.log',
+        encoding='utf-8',
+        level=logging.INFO
+    )
+    logging.info('url: %s\t concurrency: %d\t time: %s',url,concurrency,date)
 
 def worker1(url):
     requests.get(url)
