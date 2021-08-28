@@ -38,9 +38,8 @@ def main(url):
     print('Done')
     finish_task()
 
-def finish_task():
-    print('Press Any key to abort') 
-    os.system('pause >nul')
+def finish_task(): 
+    os.system('pause')
 
 def worker1(url):
     requests.get(url)
