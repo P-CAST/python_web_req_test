@@ -1,7 +1,6 @@
 import requests
 import logging
 import datetime
-import sys
 import os
 from multiprocessing import Process
 
@@ -20,10 +19,9 @@ def get_url():
 
 def main(url):
     response = requests.get(url)
-
+    
     if response.status_code == 200:
         print('Connected')
-        
     elif response.status_code == 404:
         print('Not found')
     elif response.status_code == 500:
